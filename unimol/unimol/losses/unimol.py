@@ -202,7 +202,7 @@ class UniMolInferLoss(UnicoreLoss):
         for i in range(sample_size):  # rm padding token
             encoder_pair_rep_list.append(encoder_pair_rep[i][src_tokens[i], :][:, src_tokens[i]].data.cpu().numpy())
         logging_output = {
-                "mol_repr_cls": encoder_rep[:, 0, :].data.cpu().numpy(),  # get cls token
+                "mol_repr_cls": encoder_rep.data.cpu().numpy(),  # get cls token
                 "pair_repr": encoder_pair_rep_list,
                 "smi_name": sample[target_key]["smi_name"],
                 "bsz": sample[input_key]["src_tokens"].size(0),
